@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Character
+from .models import Player
 
 
-class CharacterAdmin(admin.ModelAdmin):
+class PlayerAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'last_modified',)
 
 
-admin.site.register(Character, CharacterAdmin)
+admin.site.register(Player, PlayerAdmin)
