@@ -7,7 +7,7 @@ from undefined_world_players.models import Player
 
 
 class Room(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True, unique=True)
     # id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True)
     name = models.CharField(max_length=50, default="ROOM NAME")
     desc = models.CharField(max_length=500, default="ROOM DESCRIPTION")
