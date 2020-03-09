@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
 import uuid
 from undefined_world_players.models import Player
 
-# create room class of models
+# # create room class of models
 
 
 class Room(models.Model):
@@ -11,13 +12,18 @@ class Room(models.Model):
     desc = models.CharField(max_length=500, default="ROOM DESCRIPTION")
     #items = models.CharField(max_length=500, default=" ")
     #map = models.IntegerField(max_length=500, default=" ")
-    NORTH = models.CharField(max_length=150, default="NORTH")
-    SOUTH = models.CharField(max_length=150, default="SOUTH")
-    EAST = models.CharField(max_length=150, default="EAST")
-    WEST = models.CharField(max_length=150, default="WEST")
-    map = models.TextField(max_length=500, default="ROOM MAP")
+    NORTH = models.CharField(max_length=150)
+    SOUTH = models.CharField(max_length=150)
+    EAST = models.CharField(max_length=150)
+    WEST = models.CharField(max_length=150)
+    map = ArrayField(ArrayField(models.IntegerField(
+        null=True, blank=True), null=True, blank=True), blank=True,)
+
+    def __str__(self):
+        return self.name
 
     # create function to connect rooms
+
     def rm_connects(self, destination, heading):
         destinationID = destination.id
         reverse_dirs = {"NORTH": "SOUTH", "SOUTH": "NORTH",
