@@ -12,10 +12,10 @@ class Room(models.Model):
     desc = models.CharField(max_length=500, default="ROOM DESCRIPTION")
     #items = models.CharField(max_length=500, default=" ")
     #map = models.IntegerField(max_length=500, default=" ")
-    NORTH = models.CharField(max_length=150)
-    SOUTH = models.CharField(max_length=150)
-    EAST = models.CharField(max_length=150)
-    WEST = models.CharField(max_length=150)
+    NORTH = models.CharField(max_length=150, blank=True)
+    SOUTH = models.CharField(max_length=150, blank=True)
+    EAST = models.CharField(max_length=150, blank=True)
+    WEST = models.CharField(max_length=150, blank=True)
     map = ArrayField(ArrayField(models.IntegerField(
         null=True, blank=True), null=True, blank=True), blank=True,)
 
